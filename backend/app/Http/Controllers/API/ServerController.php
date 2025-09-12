@@ -25,7 +25,7 @@ class ServerController extends Controller
     // function for list all servers
     public function list(Request $request)
     {
-        $query = Server::query();
+        $query = Server::select('id', 'name', 'ip_address', 'status', 'provider', 'cpu_cores', 'ram_mb', 'storage_gb');
 
         // Filtering
         if ($request->has('provider')) {
