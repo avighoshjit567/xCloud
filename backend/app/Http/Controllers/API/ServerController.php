@@ -23,13 +23,55 @@ class ServerController extends Controller
     }
 
     // function for list all servers
-    public function list() 
+    public function list(Request $request)
     {
-        $servers = Server::all();
+        $query = Server::query();
+
+        // Filtering
+        if ($request->has('provider')) {
+            $query->where('provider', $request->provider);
+        }
+        if ($request->has('status')) {
+            $query->where('status', $request->status);
+        }
+        if ($request->has('cpu_cores')) {
+            $query->where('cpu_cores', $request->cpu_cores);
+        }
+
+        // Search
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                  ->orWhere('ip_address', 'like', "%$search%")
+                  ->orWhere('provider', 'like', "%$search%")
+                  ->orWhere('status', 'like', "%$search%")
+                  ->orWhere('cpu_cores', 'like', "%$search%")
+                  ->orWhere('ram_mb', 'like', "%$search%")
+                  ->orWhere('storage_gb', 'like', "%$search%") ;
+            });
+        }
+
+        // Sorting
+        $sortBy = $request->get('sort_by', 'id');
+        $sortOrder = $request->get('sort_order', 'desc');
+        $query->orderBy($sortBy, $sortOrder);
+
+        // Pagination
+        $perPage = $request->get('per_page', 10);
+        $servers = $query->paginate($perPage);
 
         return response()->json([
             'message' => 'Servers retrieved successfully',
             'servers' => ServerResource::collection($servers),
+            'pagination' => [
+                'total' => $servers->total(),
+                'per_page' => $servers->perPage(),
+                'current_page' => $servers->currentPage(),
+                'last_page' => $servers->lastPage(),
+                'from' => $servers->firstItem(),
+                'to' => $servers->lastItem(),
+            ],
             'status' => 200,
         ]);
     }
