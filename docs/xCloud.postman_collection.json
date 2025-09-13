@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "9950e130-86df-476d-b902-5366abc67adf",
+		"name": "xCloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37202559"
+	},
+	"item": [
+		{
+			"name": "Register API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Amit Ghosh",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "amit@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "amit@1234",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "amit@1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "insomnia/11.3.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"avijit@gmail.com\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://bideshibazar-web.local/api/auth/login' \\\n--header 'Accept: application/json' \\\n--header 'Content-Type: application/json' \\\n--header 'User-Agent: insomnia/11.3.0' \\\n--data-raw '{\n    \"email\": \"johndoe29@gmail.com\",\n    \"password\": \"12345678\"\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Server List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|YB01WJB5LzuKPYpJJEgdwUKPCxhnoxID52mF36oJd364b2a9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/server/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"server",
+						"list"
+					],
+					"query": [
+						{
+							"key": "provider",
+							"value": "aws",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "Shahin",
+							"disabled": true
+						},
+						{
+							"key": "per_page",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "sort_by",
+							"value": "created_at",
+							"disabled": true
+						},
+						{
+							"key": "sort_order",
+							"value": "asc",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|YB01WJB5LzuKPYpJJEgdwUKPCxhnoxID52mF36oJd364b2a9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Md, Shahin",
+							"type": "text"
+						},
+						{
+							"key": "ip_address",
+							"value": "192.168.1.4",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"type": "text"
+						},
+						{
+							"key": "provider",
+							"value": "vultr",
+							"type": "text"
+						},
+						{
+							"key": "cpu_cores",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "ram_mb",
+							"value": "1024",
+							"type": "text"
+						},
+						{
+							"key": "storage_gb",
+							"value": "1048576",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/server/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"server",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Single Server",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|YB01WJB5LzuKPYpJJEgdwUKPCxhnoxID52mF36oJd364b2a9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/server/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"server",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|YB01WJB5LzuKPYpJJEgdwUKPCxhnoxID52mF36oJd364b2a9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"web-server-3\",\n    \"ip_address\": \"203.0.113.45\",\n    \"provider\": \"aws\",\n    \"status\": \"inactive\",\n    \"cpu_cores\": 4,\n    \"ram_mb\": 8192,\n    \"storage_gb\": 100\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/server/202",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"server",
+						"202"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Server",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|YB01WJB5LzuKPYpJJEgdwUKPCxhnoxID52mF36oJd364b2a9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/server/182",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"server",
+						"182"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Delete Servers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|YB01WJB5LzuKPYpJJEgdwUKPCxhnoxID52mF36oJd364b2a9",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ids\": [4, 5]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/server/bulk-delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"server",
+						"bulk-delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
