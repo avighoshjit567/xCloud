@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreServerRequest;
+use App\Http\Requests\UpdateServerRequest;
 use App\Http\Resources\ServerResource;
 use App\Models\Server;
 
@@ -95,7 +96,7 @@ class ServerController extends Controller
     }
 
     // function for edit server
-    public function update(StoreServerRequest $request, $id) 
+    public function update(UpdateServerRequest $request, $id) 
     {
         $server = Server::find($id);
 
