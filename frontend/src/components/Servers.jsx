@@ -291,7 +291,7 @@ function Servers() {
                 </div>
             )}
             <Flex justify="center" align="center" style={{ minHeight: '100vh', background: '#f8f9fa', padding: 40 }}>
-                <Box style={{ width: '100%', maxWidth: 1200, position: 'fixed', top: 20, right: 20, left: 20 }}>
+                <Box style={{ width: '100%', maxWidth: 1200, position: 'fixed', top: 20, right: 20, left: 300 }}>
                     <Paper shadow="md" radius="md" p="xl" withBorder>
                         <LoadingOverlay visible={loading} />
                         <Group position="apart" mb="md">
